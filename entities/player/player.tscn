@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://drd2hcnv5p3p3"]
+
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_r5osj"]
+[ext_resource type="PackedScene" uid="uid://db3poekriupu5" path="res://modules/MkeyMovement/MkeyMovement.tscn" id="2_r1p7u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_574w7"]
+size = Vector2(300, 25)
+
+[node name="player" type="Node2D"]
+script = ExtResource("1_r5osj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Area2D"]
+offset_right = 300.0
+offset_bottom = 25.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(150, 12.5)
+shape = SubResource("RectangleShape2D_574w7")
+
+[node name="MkeyMovement" parent="." node_paths=PackedStringArray("MovedObject") instance=ExtResource("2_r1p7u")]
+MovedObject = NodePath("..")
