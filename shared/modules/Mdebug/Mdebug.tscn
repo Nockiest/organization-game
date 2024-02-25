@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bv86bhlhtfqvf"]
 
-[ext_resource type="Script" path="res://modules/Mdebug/Mdebug.gd" id="1_a0nnt"]
+[ext_resource type="Script" path="res://shared/modules/Mdebug/Mdebug.gd" id="1_a0nnt"]
 
 [node name="Mdebug" type="CanvasLayer"]
 script = ExtResource("1_a0nnt")

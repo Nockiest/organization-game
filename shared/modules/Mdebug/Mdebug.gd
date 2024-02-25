@@ -32,18 +32,7 @@ func _process(delta: float) -> void:
 	print( debug_label_setter_values)
 	for i in len(debug_label_setter_values) : 
 		var fc  = debug_label_setter_values[i]
-		print(i, fc , fc.call())
 		var value = fc.call()
-		
-		print(value)
-#		if typeof(valFc) == TYPE_FUNC:
-#		# Call the function
-#			var result = valFc()
-#			print(valFc, result)
-#		else:
-#			# If valFc is not a function, print it directly
-#			print(valFc)
-#		var index = debug_label_setter_values.find(valFc)
 		var label_name = "DebugLabel_" + str(i)
 		var label = vbox_container.get_child(i)
 		label.text = debug_label_setter_labels[i ]+" : " +value
