@@ -32,20 +32,13 @@ func _process(delta: float) -> void:
 #	print(clamp(boundaries[0][0], new_position.x, boundaries[1][0]),clamp(boundaries[0][1], new_position.y, boundaries[1][1]))
 	MovedObject.position  = Vector2(clamp(boundaries[0][0], new_position.x, boundaries[1][0]),clamp(boundaries[0][1], new_position.y, boundaries[1][1]))
 	
-	prev_position = MovedObject.position
-	# Check if the new position exceeds the boundaries using collision detection
-#	var collision = MovedObject.move_and_collide(motion)
-#	if collision:
-#		# If there is a collision, adjust the motion accordingly
-#		var collision_normal = collision.normal
-#		motion = motion.slide(collision_normal)
-	
-	# Rotate the parent node around its center based on button presses
 	if Input.is_action_pressed("rotate_clockwise"):
-		MovedObject.rotate(-rotation_speed * delta)
+		MovedObject.rotation_degrees -= rotation_speed * delta
 	if Input.is_action_pressed("rotate_counterclockwise"):
-		MovedObject.rotate(rotation_speed * delta)
-		
-func abort_movement():
-	MovedObject.position = prev_position
-	
+		MovedObject.rotation_degrees += rotation_speed * delta
+	prev_position = MovedObject.position 
+#	if Input.is_action_pressed("rotate_clockwise"):
+#		MovedObject.rotate(-rotation_speed * delta)
+#	if Input.is_action_pressed("rotate_counterclockwise"):
+#		MovedObject.rotate(rotation_speed * delta)
+ 
