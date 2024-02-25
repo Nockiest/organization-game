@@ -21,7 +21,3 @@ shape = SubResource("RectangleShape2D_rokfd")
 position = Vector2(413, 178)
 
 [node name="Mdebug" parent="." instance=ExtResource("2_rxvj2")]
-num_labels = null
-debug_value1 = null
-debug_value2 = null
-debug_value3 = null
