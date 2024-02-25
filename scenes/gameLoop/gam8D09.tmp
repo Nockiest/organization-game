@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4uol2mdufmg8"]
+[gd_scene load_steps=5 format=3 uid="uid://c4uol2mdufmg8"]
 
 [ext_resource type="PackedScene" uid="uid://drd2hcnv5p3p3" path="res://entities/player/player.tscn" id="1_6lpk6"]
+[ext_resource type="Script" path="res://scenes/gameLoop/gameLoop.gd" id="1_il73n"]
 [ext_resource type="PackedScene" uid="uid://bv86bhlhtfqvf" path="res://modules/Mdebug/Mdebug.tscn" id="2_rxvj2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rokfd"]
 size = Vector2(731, 645.5)
 
 [node name="gameLoop" type="Node2D"]
+script = ExtResource("1_il73n")
 
 [node name="gameField" type="Area2D" parent="."]
 position = Vector2(195, 0)

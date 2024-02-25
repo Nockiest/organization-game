@@ -1,13 +1,22 @@
 class_name DebugWindow
 extends CanvasLayer
 
-# Exported debug values
-@export var num_labels: int = 1
-@onready var vbox_container = $VBoxContainer
-func _ready() -> void:
+func find_glob_pos():
+	return str(get_viewport().get_mouse_position()) 
+	
+	
  
+@onready var vbox_container = $VBoxContainer
+
+@export var debug_label_setter_values: Array = [  find_glob_pos ]
+@export var debug_label_setter_labels: Array = [  'mouse.pos' ]
+#
+#
+	
+func _ready() -> void:
+#	debug_label_setter_values.append(find_glob_pos)
 	# Create labels based on the value of num_labels
-	for i in range(num_labels):
+	for i in debug_label_setter_values :
 		var label = Label.new()
 		# Set unique names for the labels
 		label.name = "DebugLabel_" + str(i)
@@ -16,20 +25,40 @@ func _ready() -> void:
 		vbox_container.add_child(label)
 
 func _process(delta: float) -> void:
-	# Update the text of each label with mouse position
-	for i in range(num_labels):
+ 
+	# Get the VBoxContainer node
+	var vbox_container = $VBoxContainer
+	# Update the text of each label with the tracked value
+	print( debug_label_setter_values)
+	for i in len(debug_label_setter_values) : 
+		var fc  = debug_label_setter_values[i]
+		print(i, fc , fc.call())
+		var value = fc.call()
+		
+		print(value)
+#		if typeof(valFc) == TYPE_FUNC:
+#		# Call the function
+#			var result = valFc()
+#			print(valFc, result)
+#		else:
+#			# If valFc is not a function, print it directly
+#			print(valFc)
+#		var index = debug_label_setter_values.find(valFc)
 		var label_name = "DebugLabel_" + str(i)
-		var label = $VBoxContainer.get_node(label_name)
-		if label:
-			label.text = "Mouse Position: " + str(get_viewport().get_mouse_position())
-func track_value(value_name: String, value: Variant) -> void:
+		var label = vbox_container.get_child(i)
+		label.text = debug_label_setter_labels[i ]+" : " +value
+		label.name = label_name
+ 
+func track_value(value_name: String, value ) -> void:
 	# Create a new label for the tracked value
 	var label = Label.new()
 	# Set unique names for the labels
-	label.name = "DebugLabel_" + str(num_labels)
+	label.name = "DebugLabel_" #+ str(num_labels)
 	# Set the text of the label to display the tracked value
-	label.text = value_name + ": " + str(value)
+	label.text = value_name + ": "# + str(value)
 	# Increment the number of labels
-	num_labels += 1
+#	num_labels += 1
 	# Add the label to the VBoxContainer
 	vbox_container.add_child(label)
+	debug_label_setter_values.append(value)
+	debug_label_setter_labels.append(value_name)
