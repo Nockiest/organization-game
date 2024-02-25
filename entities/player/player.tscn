@@ -17,7 +17,7 @@ shape = SubResource("RectangleShape2D_574w7")
 offset_right = 300.0
 offset_bottom = 25.0
 
-[node name="MkeyMovement" parent="." node_paths=PackedStringArray("MovedObject") instance=ExtResource("2_r1p7u")]
+[node name="MkeyMovement" parent="." node_paths=PackedStringArray("MovedObject") groups=["entities", "players"] instance=ExtResource("2_r1p7u")]
 MovedObject = NodePath("..")
 
 [node name="Marker2D" type="Marker2D" parent="."]

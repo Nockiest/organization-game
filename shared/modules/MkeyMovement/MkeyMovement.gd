@@ -1,3 +1,4 @@
+class_name KeyMovement
 extends Node
 
 @export var MovedObject: Node2D
@@ -6,6 +7,7 @@ extends Node
 
 # Define the boundaries array with the screen size
 @export var boundaries: Array = [Vector2(0, 0), Vector2(1000, 1000)]
+@onready var prev_position = MovedObject.position 
 
 func _process(delta: float) -> void:
 	# Get the input vector based on WASD keys
@@ -27,7 +29,10 @@ func _process(delta: float) -> void:
 	
 	# Calculate the new position
 	var new_position = MovedObject.global_position + motion
+#	print(clamp(boundaries[0][0], new_position.x, boundaries[1][0]),clamp(boundaries[0][1], new_position.y, boundaries[1][1]))
+	MovedObject.position  = Vector2(clamp(boundaries[0][0], new_position.x, boundaries[1][0]),clamp(boundaries[0][1], new_position.y, boundaries[1][1]))
 	
+	prev_position = MovedObject.position
 	# Check if the new position exceeds the boundaries using collision detection
 #	var collision = MovedObject.move_and_collide(motion)
 #	if collision:
@@ -40,3 +45,7 @@ func _process(delta: float) -> void:
 		MovedObject.rotate(-rotation_speed * delta)
 	if Input.is_action_pressed("rotate_counterclockwise"):
 		MovedObject.rotate(rotation_speed * delta)
+		
+func abort_movement():
+	MovedObject.position = prev_position
+	
