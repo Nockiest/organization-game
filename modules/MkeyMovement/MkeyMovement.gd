@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 	
 	# Normalize the input vector to ensure consistent speed in all directions
 	input_vector = input_vector.normalized()
-	print('moving',input_vector)
+ 
 	# Move the parent node based on input
 	var motion = input_vector * speed * delta
 	# Translate the parent node's position
