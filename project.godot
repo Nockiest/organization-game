@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://shared/globals/global.gd"
+Utils="*res://shared/utils/utils.gd"
+Grid="*res://shared/utils/grid-utils.gd"
 
 [display]
 

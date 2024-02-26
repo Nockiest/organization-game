@@ -1,5 +1,14 @@
 extends Node
 
+var red = Color('red')
+var blue = Color('blue')
+var green = Color('green')
 
-var gameColors = [Color('red'), Color('blue'), Color('green')]
-var gameShapes = ['rectangle', 'triangle', 'circle']
+
+enum GameColors {
+	RED   ,
+	BLUE  ,
+	GREEN  ,
+}
+
+ 

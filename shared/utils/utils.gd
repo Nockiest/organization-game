@@ -176,7 +176,6 @@ func print_spaced(messages: Array, debug:bool=true) -> void:
 		print_debug(formatted_message)
 	else:
 		print(formatted_message)
-
  
 func calculate_is_inside(polygon, point = Vector2(100,100)):
 #	print(collision_shape.polygon)

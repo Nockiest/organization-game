@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://y1gxfuh8enx6"]
+
+[ext_resource type="Script" path="res://entities/shapes/shape.gd" id="1_qku6t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1xqt"]
+radius = 73.0616
+
+[node name="shape" type="RigidBody2D"]
+script = ExtResource("1_qku6t")
+shape_type = null
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u1xqt")
