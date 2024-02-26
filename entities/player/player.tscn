@@ -6,7 +6,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p3utq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_574w7"]
-size = Vector2(296, 20)
+size = Vector2(304, 28)
 
 [node name="player" type="RigidBody2D"]
 collision_layer = 3

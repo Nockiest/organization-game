@@ -1,8 +1,7 @@
 class_name GameShapes
 extends Node
 
-
-enum GameShapes {
+enum GameShapeTypes {
 	RECTANGLE,
 	TRIANGLE,
 	CIRCLE

@@ -12,6 +12,7 @@ size = Vector2(147, 144)
 [node name="Wall" type="RigidBody2D"]
 light_mask = 4
 visibility_layer = 7
+z_index = -2
 material = SubResource("CanvasItemMaterial_s2fqf")
 use_parent_material = true
 collision_layer = 4
@@ -24,6 +25,7 @@ lock_rotation = true
 freeze = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
 position = Vector2(0, 1)
 scale = Vector2(1, 0.986486)
 texture = ExtResource("1_ye2ox")

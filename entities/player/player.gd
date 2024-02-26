@@ -8,8 +8,11 @@ extends Node2D
 var collision_shape: CollisionShape2D
 
 func _draw() -> void:
-	print('drawing')
-	draw_circle(Vector2.ZERO, 5 , Color('black'))
+	# Set the Z-index for the drawing
+ 
+
+	# Draw the stuff here
+	draw_circle(Vector2.ZERO, 5 , Color("black"))
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Get a reference to the CollisionShape2D node

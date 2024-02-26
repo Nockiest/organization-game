@@ -24,7 +24,7 @@ Stats="*res://shared/globals/stats.gd"
 
 [display]
 
-window/size/viewport_height=1200
+window/size/viewport_height=1000
 
 [input]
 

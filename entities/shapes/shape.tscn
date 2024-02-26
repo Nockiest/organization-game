@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://y1gxfuh8enx6"]
+[gd_scene load_steps=7 format=3 uid="uid://y1gxfuh8enx6"]
 
 [ext_resource type="Script" path="res://entities/shapes/shape.gd" id="1_qku6t"]
 [ext_resource type="PackedScene" uid="uid://dwenqlcx7k3vm" path="res://shared/modules/MdrawShape/drawShape.tscn" id="2_13huw"]
@@ -12,6 +12,9 @@ bounce = 0.3
 [sub_resource type="CircleShape2D" id="CircleShape2D_u1xqt"]
 radius = 73.0616
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mn5jx"]
+size = Vector2(3, 3)
+
 [node name="shape" type="RigidBody2D" node_paths=PackedStringArray("collision_shape")]
 material = SubResource("CanvasItemMaterial_sht0v")
 collision_layer = 3
@@ -24,7 +27,6 @@ max_contacts_reported = 5
 contact_monitor = true
 can_sleep = false
 script = ExtResource("1_qku6t")
-size = 51
 collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -33,6 +35,13 @@ shape = SubResource("CircleShape2D_u1xqt")
 [node name="drawShape" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_13huw")]
 parent = NodePath("..")
 
+[node name="Marker2D" type="Area2D" parent="." groups=["shapeCenters"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D"]
+shape = SubResource("RectangleShape2D_mn5jx")
+debug_color = Color(0.956863, 0.188235, 0.258824, 0.419608)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]
+[connection signal="area_entered" from="Marker2D" to="." method="_on_marker_2d_area_entered"]
