@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Global="*res://shared/globals/global.gd"
 Utils="*res://shared/utils/utils.gd"
 Grid="*res://shared/utils/grid-utils.gd"
+Stats="*res://shared/globals/stats.gd"
 
 [display]
 
@@ -61,6 +62,16 @@ rotate_counterclockwise={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_render/layer_1="shape"
+2d_render/layer_2="player"
+2d_physics/layer_1="shape"
+2d_navigation/layer_1="shape"
+2d_physics/layer_2="player"
+2d_navigation/layer_2="player"
+2d_physics/layer_3="enviroment"
 
 [rendering]
 

@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4uol2mdufmg8"]
+[gd_scene load_steps=8 format=3 uid="uid://c4uol2mdufmg8"]
 
 [ext_resource type="PackedScene" uid="uid://drd2hcnv5p3p3" path="res://entities/player/player.tscn" id="1_6lpk6"]
 [ext_resource type="Script" path="res://scenes/gameLoop/gameLoop.gd" id="1_il73n"]
 [ext_resource type="Script" path="res://scenes/gameLoop/gameField.gd" id="2_mf3po"]
 [ext_resource type="PackedScene" uid="uid://bv86bhlhtfqvf" path="res://shared/modules/Mdebug/Mdebug.tscn" id="2_rxvj2"]
+[ext_resource type="PackedScene" uid="uid://y1gxfuh8enx6" path="res://entities/shapes/shape.tscn" id="4_333sw"]
+[ext_resource type="PackedScene" uid="uid://chp2c7l6dnqcm" path="res://entities/wall/wall.tscn" id="5_xxc4p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wecsy"]
 size = Vector2(754, 1197)
@@ -23,5 +25,64 @@ shape = SubResource("RectangleShape2D_wecsy")
 
 [node name="player" parent="gameField/Objects" instance=ExtResource("1_6lpk6")]
 position = Vector2(413, 178)
+
+[node name="shape" parent="gameField/Objects" instance=ExtResource("4_333sw")]
+position = Vector2(420, 23)
+
+[node name="Walls" type="Node" parent="gameField"]
+
+[node name="wall" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 73)
+
+[node name="wall2" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 362)
+
+[node name="wall3" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 217)
+
+[node name="wall4" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 505)
+
+[node name="wall5" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 794)
+
+[node name="wall6" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 649)
+
+[node name="wall7" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 937)
+
+[node name="wall8" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 1226)
+
+[node name="wall9" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 1081)
+
+[node name="wall10" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1025, 72)
+
+[node name="wall11" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1025, 361)
+
+[node name="wall12" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1025, 216)
+
+[node name="wall13" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1026, 505)
+
+[node name="wall14" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1026, 794)
+
+[node name="wall15" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1026, 649)
+
+[node name="wall16" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1026, 937)
+
+[node name="wall17" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1026, 1226)
+
+[node name="wall18" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1026, 1081)
 
 [node name="Mdebug" parent="." instance=ExtResource("2_rxvj2")]

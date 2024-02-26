@@ -1,35 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://drd2hcnv5p3p3"]
+[gd_scene load_steps=5 format=3 uid="uid://drd2hcnv5p3p3"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_r5osj"]
 [ext_resource type="PackedScene" uid="uid://db3poekriupu5" path="res://shared/modules/MkeyMovement/MkeyMovement.tscn" id="2_r1p7u"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_574w7"]
-size = Vector2(300, 25)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p3utq"]
 
-[node name="player" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_574w7"]
+size = Vector2(296, 20)
+
+[node name="player" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_p3utq")
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+freeze = true
 script = ExtResource("1_r5osj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_574w7")
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -1
+polygon = PackedVector2Array(-150, 12, 150, 12, 150, -12, -150, -12)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -12.5
-offset_right = 150.0
-offset_bottom = 12.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+shape = SubResource("RectangleShape2D_574w7")
 
 [node name="MkeyMovement" parent="." node_paths=PackedStringArray("MovedObject") groups=["entities", "players"] instance=ExtResource("2_r1p7u")]
 MovedObject = NodePath("..")
 speed = 200.0
 rotation_speed = 300.0
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

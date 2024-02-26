@@ -216,6 +216,19 @@ func find_ancestor_by_factor(x: int, node: Node) -> Node:
 			break
 
 	return current_node
+	
+func translate_val_to_color(color:Colors.GameColors):
+	match color:
+		Colors.GameColors.RED:
+			return Color(1, 0, 0) 
+		Colors.GameColors.BLUE:
+			return Color(0, 0, 1)
+		Colors.GameColors.GREEN:
+			return Color(0, 1, 0)
+		_:
+			print("not fonud color")
+			
+ 
 # sadly not working
 #func find_ancestor_by_class(name_of_class: String, node: Node) -> Node:
 #	var current_node = node
