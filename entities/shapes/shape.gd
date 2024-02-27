@@ -66,9 +66,9 @@ func count_points(correctly_sorted:bool):
 	queue_free()
 
 func _on_marker_2d_area_entered(area: Area2D) -> void:
-	print('marker entered ', area)
+#	print('marker entered ', area)
 	if area is Bucket:
 		var bucket = area as Bucket
-		print('marker entered a bucket')
-		print(bucket.accepted_shape, shape_type)
-		count_points(bucket.accepted_shape == shape_type)
+#		print('marker entered a bucket')
+		print('marker entered a bucket ' ,bucket.accepted_shape, shape_type)
+		count_points(bucket.accepted_shape == shape_type and bucket.shape_color == shape_color)

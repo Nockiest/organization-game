@@ -43,32 +43,28 @@ func get_movement_direction(from, to) -> DirectionList.Direction:
 	var movement_vector = to - from
 	if movement_vector.x < 0:
 		direction = DirectionList.Direction.LEFT
-#		print("x1")
 	elif movement_vector.x > 0:
 		direction = DirectionList.Direction.RIGHT
-#		print("x2")
 
 	if movement_vector.y < 0:
 		direction = DirectionList.Direction.UP
-#		print("x3")
 	elif movement_vector.y > 0:
 		direction = DirectionList.Direction.DOWN
-#		print("x4")
 
 	# Check for diagonal movements
 	if movement_vector.x != 0 and movement_vector.y != 0:
 		if movement_vector.x < 0 and movement_vector.y < 0:
 			direction = DirectionList.Direction.UP_LEFT
-#			print("x5")
+
 		elif movement_vector.x > 0 and movement_vector.y < 0:
 			direction = DirectionList.Direction.UP_RIGHT
-#			print("x6")
+
 		elif movement_vector.x < 0 and movement_vector.y > 0:
 			direction = DirectionList.Direction.DOWN_LEFT
-#			print("x7")
+
 		elif movement_vector.x > 0 and movement_vector.y > 0:
 			direction = DirectionList.Direction.DOWN_RIGHT
-#			print("x8")
+
 	return direction
 
 # Function to find the tile node using coordinates

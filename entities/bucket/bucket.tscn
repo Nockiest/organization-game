@@ -6,9 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ox3r2"]
 size = Vector2(215, 205)
 
-[node name="bucket" type="Area2D" node_paths=PackedStringArray("collision_shape")]
+[node name="bucket" type="Area2D"]
 script = ExtResource("1_0tol2")
-collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
@@ -20,5 +19,6 @@ polygon = PackedVector2Array(-109, -103, -109, 103, 107, 103, 107, -103, 100, -1
 
 [node name="drawShape" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_plgmm")]
 parent = NodePath("..")
+shape_type = 1
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

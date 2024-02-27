@@ -24,12 +24,7 @@ func _ready() -> void:
 		# Add the label to the VBoxContainer
 		vbox_container.add_child(label)
 
-func _process(delta: float) -> void:
- 
-	# Get the VBoxContainer node
-	var vbox_container = $VBoxContainer
-	# Update the text of each label with the tracked value
- 
+func _process(_delta: float) -> void:
 	for i in len(debug_label_setter_values) : 
 		var fc  = debug_label_setter_values[i]
 		var value = fc.call()
