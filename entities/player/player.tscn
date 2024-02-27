@@ -1,21 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://drd2hcnv5p3p3"]
+[gd_scene load_steps=4 format=3 uid="uid://drd2hcnv5p3p3"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_r5osj"]
 [ext_resource type="PackedScene" uid="uid://db3poekriupu5" path="res://shared/modules/MkeyMovement/MkeyMovement.tscn" id="2_r1p7u"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p3utq"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_574w7"]
 size = Vector2(304, 28)
 
-[node name="player" type="RigidBody2D"]
+[node name="player" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_p3utq")
-gravity_scale = 0.0
-max_contacts_reported = 1
-contact_monitor = true
-freeze = true
+motion_mode = 1
 script = ExtResource("1_r5osj")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
@@ -29,8 +23,5 @@ shape = SubResource("RectangleShape2D_574w7")
 
 [node name="MkeyMovement" parent="." node_paths=PackedStringArray("MovedObject") groups=["entities", "players"] instance=ExtResource("2_r1p7u")]
 MovedObject = NodePath("..")
-speed = 400.0
+speed = 600.0
 rotation_speed = 500.0
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

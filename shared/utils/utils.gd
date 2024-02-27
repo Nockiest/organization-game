@@ -217,16 +217,7 @@ func find_ancestor_by_factor(x: int, node: Node) -> Node:
 
 	return current_node
 	
-func translate_val_to_color(color:Colors.GameColors):
-	match color:
-		Colors.GameColors.RED:
-			return Color(1, 0, 0) 
-		Colors.GameColors.BLUE:
-			return Color(0, 0, 1)
-		Colors.GameColors.GREEN:
-			return Color(0, 1, 0)
-		_:
-			print("not fonud color")
+ 
 			
 func get_random_enum_value(enum_type: Dictionary) -> int:
 	var enum_values = enum_type.values()

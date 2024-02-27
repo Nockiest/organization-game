@@ -7,7 +7,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s7j4a"]
 friction = 0.0
-bounce = 0.3
+bounce = 0.8
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u1xqt"]
 radius = 73.0616
@@ -27,6 +27,7 @@ max_contacts_reported = 5
 contact_monitor = true
 can_sleep = false
 script = ExtResource("1_qku6t")
+size = 30
 collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

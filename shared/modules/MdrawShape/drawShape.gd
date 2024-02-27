@@ -5,7 +5,7 @@ extends Node2D
 @export var shape_type:= GameShapes.GameShapeTypes.RECTANGLE
 @export var shape_color:= Colors.GameColors.BLUE
 @export var size:=50
- 
+var colors_instance = Colors.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if parent:
@@ -22,8 +22,8 @@ func _ready() -> void:
  
 
 func _draw() -> void:
-	var draw_color = Utils.translate_val_to_color(shape_color)
-	print(parent, ' ' , shape_type)
+	var draw_color = colors_instance.translate_val_to_color(shape_color)
+	print(draw_color)
 	match shape_type:
 		GameShapes.GameShapeTypes.RECTANGLE:
 			draw_rect(Rect2(-size, -size, size * 2, size * 2), draw_color)

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://i34d1w7t3q1r"]
+
+[sub_resource type="Theme" id="Theme_028je"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixfbu"]
+
+[sub_resource type="Theme" id="Theme_3rwu6"]
+Button/styles/normal = SubResource("StyleBoxFlat_ixfbu")
+
+[node name="base1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_028je")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme = SubResource("Theme_3rwu6")
+text = "my button"

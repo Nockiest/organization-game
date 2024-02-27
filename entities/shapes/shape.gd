@@ -14,7 +14,7 @@ class_name Shape extends RigidBody2D
 	set(value):
 		collision_shape=value
 		update_collision_shape()
-var velocity = Vector2(0,1)
+var velocity = Vector2(0,0)
 
 
 func _draw() -> void:
@@ -45,13 +45,14 @@ func update_collision_shape() -> void:
 
  
 func count_points(correct_shape:bool,correct_color:bool):
-	var earned_score =  score/2 if correct_shape else -(score/2)
-	earned_score += score/2 if correct_color else 0
+	var earned_score =  round(score/2) if correct_shape else -round(score/2)
+	earned_score += round(score/2) if correct_color else 0
 	Stats.game_score += earned_score
 	queue_free()
 
 func _on_marker_2d_area_entered(area: Area2D) -> void:
 #	print('marker entered ', area)
+#	pass
 	if area is Bucket:
 		var bucket = area as Bucket
 #		print('marker entered a bucket')

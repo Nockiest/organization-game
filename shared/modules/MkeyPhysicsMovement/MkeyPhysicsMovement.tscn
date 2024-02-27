@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://crhmo1h2e7hcc"]
+
+[ext_resource type="Script" path="res://shared/modules/MkeyPhysicsMovement/MkeyPhysicsMovement.gd" id="1_fv3vr"]
+
+[node name="MkeyPhysicsMovement" type="Node"]
+script = ExtResource("1_fv3vr")
