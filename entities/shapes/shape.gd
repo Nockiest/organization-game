@@ -1,10 +1,10 @@
 class_name Shape extends RigidBody2D
 
-@export var shape_type:= GameShapes.GameShapeTypes.RECTANGLE:
+@export var shape_type:= Utils.get_random_enum_value(GameShapes.GameShapeTypes):
 	set(value):
 		shape_type=value
 		update_collision_shape()
-@export var shape_color:= Colors.GameColors.BLUE:
+@export var shape_color:= Utils.get_random_enum_value(Colors.GameColors):
 	set(value):
 		shape_color=value
 		update_collision_shape()
@@ -43,26 +43,11 @@ func update_collision_shape() -> void:
 		_:
 			assert(false, 'invalid set shape type')
 
-#func _on_body_entered(body: Node) -> void:
-#	print('body entered')
-#
-#
-#func _on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
-#	print('body shape entered',body)
-#
-#
-#func _on_sleeping_state_changed() -> void:
-#	print('sleeping changed')
-
-#func _physics_process(delta: float) -> void:
-#	var collision_info = move_and_collide(velocity*delta)
-#	if collision_info:
-#		print(collision_info)
-#		velocity = velocity.bounce(collision_info.normal)
-#	if Input.is_action_just_pressed( "ui_accept"):
-#		apply_central_impulse(Vector2(1,1))
-func count_points(correctly_sorted:bool):
-	Stats.game_score += score if correctly_sorted else -score 
+ 
+func count_points(correct_shape:bool,correct_color:bool):
+	var earned_score =  score/2 if correct_shape else -(score/2)
+	earned_score += score/2 if correct_color else 0
+	Stats.game_score += earned_score
 	queue_free()
 
 func _on_marker_2d_area_entered(area: Area2D) -> void:
@@ -70,5 +55,5 @@ func _on_marker_2d_area_entered(area: Area2D) -> void:
 	if area is Bucket:
 		var bucket = area as Bucket
 #		print('marker entered a bucket')
-		print('marker entered a bucket ' ,bucket.accepted_shape, shape_type)
-		count_points(bucket.accepted_shape == shape_type and bucket.shape_color == shape_color)
+#		print('marker entered a bucket ' ,bucket.accepted_shape, shape_type)
+		count_points(bucket.accepted_shape == shape_type , bucket.shape_color == shape_color)

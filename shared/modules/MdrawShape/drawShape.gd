@@ -8,7 +8,6 @@ extends Node2D
  
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print('READY')
 	if parent:
 		if 'shape_type' in parent:
 			shape_type = parent.shape_type

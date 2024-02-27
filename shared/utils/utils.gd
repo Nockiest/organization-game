@@ -228,7 +228,9 @@ func translate_val_to_color(color:Colors.GameColors):
 		_:
 			print("not fonud color")
 			
- 
+func get_random_enum_value(enum_type: Dictionary) -> int:
+	var enum_values = enum_type.values()
+	return enum_values[randi() % enum_values.size()]
 # sadly not working
 #func find_ancestor_by_class(name_of_class: String, node: Node) -> Node:
 #	var current_node = node

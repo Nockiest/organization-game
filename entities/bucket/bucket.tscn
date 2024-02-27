@@ -20,5 +20,3 @@ polygon = PackedVector2Array(-109, -103, -109, 103, 107, 103, 107, -103, 100, -1
 [node name="drawShape" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_plgmm")]
 parent = NodePath("..")
 shape_type = 1
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]

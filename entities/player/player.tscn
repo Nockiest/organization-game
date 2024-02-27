@@ -29,8 +29,8 @@ shape = SubResource("RectangleShape2D_574w7")
 
 [node name="MkeyMovement" parent="." node_paths=PackedStringArray("MovedObject") groups=["entities", "players"] instance=ExtResource("2_r1p7u")]
 MovedObject = NodePath("..")
-speed = 200.0
-rotation_speed = 300.0
+speed = 400.0
+rotation_speed = 500.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
