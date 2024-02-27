@@ -1,11 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://i34d1w7t3q1r"]
+[gd_scene load_steps=3 format=3 uid="uid://i34d1w7t3q1r"]
+
+[ext_resource type="Theme" uid="uid://ck460gswnkphl" path="res://shared/themes/base1/base1.tres" id="1_s3uit"]
 
 [sub_resource type="Theme" id="Theme_028je"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixfbu"]
-
-[sub_resource type="Theme" id="Theme_3rwu6"]
-Button/styles/normal = SubResource("StyleBoxFlat_ixfbu")
 
 [node name="base1" type="Control"]
 layout_mode = 3
@@ -20,5 +17,5 @@ theme = SubResource("Theme_028je")
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
-theme = SubResource("Theme_3rwu6")
+theme = ExtResource("1_s3uit")
 text = "my button"
