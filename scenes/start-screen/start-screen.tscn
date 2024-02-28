@@ -42,10 +42,16 @@ layout_mode = 2
 theme = ExtResource("3_hn1l2")
 text = "START GAME"
 
+[node name="TutorialBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_hn1l2")
+text = "Tutorial"
+
 [node name="EndGameBtn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_hn1l2")
 text = "Quit Game"
 
 [connection signal="pressed" from="VBoxContainer/StartGameBtn" to="." method="_on_start_game_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/TutorialBtn" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="VBoxContainer/EndGameBtn" to="." method="_on_button_2_pressed"]

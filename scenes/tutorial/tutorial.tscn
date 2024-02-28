@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcsl3r1w78map"]
+
+[ext_resource type="Theme" uid="uid://ck460gswnkphl" path="res://shared/themes/base1/base1.tres" id="1_cjxrl"]
+[ext_resource type="Script" path="res://scenes/tutorial/tutorial.gd" id="1_kruan"]
+[ext_resource type="Texture2D" uid="uid://crupnwve8gfas" path="res://assets/m8/PRE_ORIG_SIZE.png" id="2_uuaji"]
+
+[sub_resource type="Theme" id="Theme_5b6qg"]
+VBoxContainer/constants/separation = 16
+
+[node name="tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kruan")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uuaji")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 102.0
+offset_right = 142.0
+offset_bottom = 40.0
+grow_horizontal = 2
+scale = Vector2(11.8869, 19.9934)
+color = Color(0.552941, 0.552941, 0.552941, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+offset_left = 15.0
+offset_top = 2.0
+offset_right = 76.0
+offset_bottom = 28.0
+scale = Vector2(0.167763, 0.0891638)
+text = "Tutorial"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_top = 4.76534
+offset_right = 250.0
+offset_bottom = 211.765
+scale = Vector2(0.120836, 0.0545971)
+bbcode_enabled = true
+text = "[b]Goal:[/b] You have 3 buckets with different shapes. Using the white plank, rotate and sort them into the correct buckets. The colors act as modifiers for the score you get. Try to earn as many points as possible! "
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="ColorRect"]
+offset_left = 0.251923
+offset_top = 14.5763
+offset_right = 250.252
+offset_bottom = 221.576
+scale = Vector2(0.120836, 0.0545971)
+bbcode_enabled = true
+text = "[b]Scoring:[/b]  
+Correct Shape: 25Pt
+Correct Shape + Color: 50Pt
+Color: 0Pt
+Incorect Shape + Color: -50Pt"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." node_paths=PackedStringArray("shortcut_context")]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 287.0
+offset_top = 165.0
+offset_right = 384.0
+offset_bottom = 231.0
+grow_horizontal = 2
+grow_vertical = 2
+shortcut_context = NodePath("..")
+theme = SubResource("Theme_5b6qg")
+
+[node name="Button" type="Button" parent="VBoxContainer" node_paths=PackedStringArray("shortcut_context")]
+z_index = 1
+layout_mode = 2
+shortcut_context = NodePath("../..")
+theme = ExtResource("1_cjxrl")
+text = "GO BACK"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -222,6 +222,9 @@ func find_ancestor_by_factor(x: int, node: Node) -> Node:
 func get_random_enum_value(enum_type: Dictionary) -> int:
 	var enum_values = enum_type.values()
 	return enum_values[randi() % enum_values.size()]
+	
+func exit_game() -> void:
+	get_tree().quit()
 # sadly not working
 #func find_ancestor_by_class(name_of_class: String, node: Node) -> Node:
 #	var current_node = node

@@ -38,47 +38,57 @@ shape_type = 1
 
 [node name="Walls" type="Node" parent="gameField"]
 
+[node name="wall18" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1051, 1015)
+
 [node name="wall" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(122, 73)
+position = Vector2(122, 1)
 
 [node name="wall2" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(122, 362)
+position = Vector2(122, 290)
 
 [node name="wall3" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(122, 218)
+position = Vector2(122, 146)
 
 [node name="wall4" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(122, 505)
+position = Vector2(122, 433)
 
 [node name="wall5" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(122, 794)
+position = Vector2(122, 722)
 
 [node name="wall6" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(122, 649)
+position = Vector2(122, 577)
 
 [node name="wall7" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(122, 937)
+position = Vector2(122, 865)
+
+[node name="wall8" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 1007)
 
 [node name="wall10" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(1050, 70)
+position = Vector2(1052, 4)
 
 [node name="wall11" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(1050, 359)
+position = Vector2(1052, 293)
 
 [node name="wall12" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(1050, 214)
+position = Vector2(1052, 148)
 
 [node name="wall13" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(1051, 503)
+position = Vector2(1053, 437)
 
 [node name="wall14" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(1051, 792)
+position = Vector2(1053, 726)
 
 [node name="wall15" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(1051, 647)
+position = Vector2(1053, 581)
 
 [node name="wall16" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(1051, 935)
+position = Vector2(1053, 869)
+
+[node name="wall17" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(617, -157)
+scale = Vector2(13.1854, 1.20086)
 
 [node name="Buckets" type="Node2D" parent="gameField"]
 position = Vector2(0, 889)
