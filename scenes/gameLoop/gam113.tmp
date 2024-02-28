@@ -1,0 +1,122 @@
+[gd_scene load_steps=11 format=3 uid="uid://c4uol2mdufmg8"]
+
+[ext_resource type="PackedScene" uid="uid://drd2hcnv5p3p3" path="res://entities/player/player.tscn" id="1_6lpk6"]
+[ext_resource type="Script" path="res://scenes/gameLoop/gameLoop.gd" id="1_il73n"]
+[ext_resource type="Script" path="res://scenes/gameLoop/gameField.gd" id="2_mf3po"]
+[ext_resource type="PackedScene" uid="uid://bv86bhlhtfqvf" path="res://shared/modules/Mdebug/Mdebug.tscn" id="2_rxvj2"]
+[ext_resource type="PackedScene" uid="uid://y1gxfuh8enx6" path="res://entities/shapes/shape.tscn" id="4_333sw"]
+[ext_resource type="Script" path="res://scenes/gameLoop/shapeContainer.gd" id="4_bmeh1"]
+[ext_resource type="PackedScene" uid="uid://chp2c7l6dnqcm" path="res://entities/wall/wall.tscn" id="5_xxc4p"]
+[ext_resource type="PackedScene" uid="uid://bhqwwsros3oc" path="res://entities/bucket/bucket.tscn" id="6_r8das"]
+[ext_resource type="Script" path="res://scenes/gameLoop/Timer.gd" id="9_xm3lm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wecsy"]
+size = Vector2(781, 1197)
+
+[node name="gameLoop" type="Node2D"]
+script = ExtResource("1_il73n")
+
+[node name="gameField" type="Area2D" parent="."]
+position = Vector2(195, 0)
+script = ExtResource("2_mf3po")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gameField"]
+position = Vector2(391.5, 598.5)
+shape = SubResource("RectangleShape2D_wecsy")
+
+[node name="Objects" type="Node" parent="gameField"]
+
+[node name="player" parent="gameField/Objects" instance=ExtResource("1_6lpk6")]
+position = Vector2(413, 178)
+
+[node name="shapes" type="Node" parent="gameField/Objects"]
+script = ExtResource("4_bmeh1")
+
+[node name="shape" parent="gameField/Objects/shapes" instance=ExtResource("4_333sw")]
+position = Vector2(420, 23)
+shape_type = 1
+
+[node name="Walls" type="Node" parent="gameField"]
+
+[node name="wall" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 73)
+
+[node name="wall2" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 362)
+
+[node name="wall3" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 218)
+
+[node name="wall4" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 505)
+
+[node name="wall5" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 794)
+
+[node name="wall6" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 649)
+
+[node name="wall7" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 937)
+
+[node name="wall8" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 1226)
+
+[node name="wall9" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(122, 1081)
+
+[node name="wall10" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1050, 70)
+
+[node name="wall11" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1050, 359)
+
+[node name="wall12" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1050, 214)
+
+[node name="wall13" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1051, 503)
+
+[node name="wall14" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1051, 792)
+
+[node name="wall15" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1051, 647)
+
+[node name="wall16" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1051, 935)
+
+[node name="wall17" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1051, 1224)
+
+[node name="wall18" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
+position = Vector2(1051, 1079)
+
+[node name="Buckets" type="Node2D" parent="gameField"]
+position = Vector2(0, 889)
+
+[node name="bucket" parent="gameField/Buckets" instance=ExtResource("6_r8das")]
+position = Vector2(130, -8)
+scale = Vector2(1.2, 1.2)
+accepted_shape = 0
+
+[node name="bucket2" parent="gameField/Buckets" instance=ExtResource("6_r8das")]
+position = Vector2(392, -8)
+scale = Vector2(1.2, 1.2)
+accepted_shape = 1
+shape_color = 0
+
+[node name="bucket3" parent="gameField/Buckets" instance=ExtResource("6_r8das")]
+position = Vector2(654, -8)
+scale = Vector2(1.2, 1.2)
+shape_color = 2
+
+[node name="Mdebug" parent="." instance=ExtResource("2_rxvj2")]
+
+[node name="WaveDelay" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+script = ExtResource("9_xm3lm")
+
+[connection signal="child_exiting_tree" from="gameField/Objects/shapes" to="." method="_on_shapes_child_exiting_tree"]
+[connection signal="timeout" from="WaveDelay" to="gameField" method="_on_wave_delay_timeout"]

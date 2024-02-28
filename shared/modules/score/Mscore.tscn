@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm17a4hl2i6nh"]
+
+[ext_resource type="Script" path="res://shared/modules/score/Mscore.gd" id="1_qupyn"]
+
+[node name="Mscore" type="Node"]
+script = ExtResource("1_qupyn")

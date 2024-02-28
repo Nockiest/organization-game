@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3hbqyo16200u"]
+
+[ext_resource type="Script" path="res://scenes/end-screen/end-screen.gd" id="1_ywl3q"]
+[ext_resource type="Texture2D" uid="uid://d3f4w8ws72y40" path="res://assets/m2/PRE_ORIG_SIZE.png" id="2_qjjt1"]
+[ext_resource type="Theme" uid="uid://ck460gswnkphl" path="res://shared/themes/base1/base1.tres" id="3_5hlay"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hauy"]
+bg_color = Color(0.168627, 0.223529, 0.941176, 1)
+border_color = Color(0, 0.921569, 0.847059, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 5
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="FontFile" id="FontFile_85qdv"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/15/0 = Vector2(0, 0)
+cache/0/15/0/ascent = 0.0
+cache/0/15/0/descent = 0.0
+cache/0/15/0/underline_position = 0.0
+cache/0/15/0/underline_thickness = 0.0
+cache/0/15/0/scale = 1.0
+cache/0/15/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/15/0/kerning_overrides/15/0 = Vector2(0, 0)
+
+[sub_resource type="Theme" id="Theme_ledke"]
+default_font = SubResource("FontFile_85qdv")
+default_font_size = 15
+Label/styles/normal = SubResource("StyleBoxFlat_7hauy")
+
+[sub_resource type="LabelSettings" id="LabelSettings_u6bax"]
+
+[sub_resource type="Theme" id="Theme_djcq2"]
+VBoxContainer/constants/separation = 16
+
+[node name="endScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ywl3q")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qjjt1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = 10.0
+offset_right = 44.0
+offset_bottom = 36.0
+grow_horizontal = 2
+theme = SubResource("Theme_ledke")
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_u6bax")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -20.0
+offset_right = 48.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_djcq2")
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_5hlay")
+text = "NEW GAME"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_5hlay")
+text = "QuitGame
+"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

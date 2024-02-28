@@ -1,0 +1,32 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ck460gswnkphl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ng8cl"]
+bg_color = Color(0.168627, 0.223529, 0.941176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixfbu"]
+resource_name = "<null>"
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.168627, 0.223529, 0.941176, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color(0, 0, 0, 0.615686)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxFlat_ng8cl")
+Button/styles/normal = SubResource("StyleBoxFlat_ixfbu")

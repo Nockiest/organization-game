@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://chp2c7l6dnqcm"]
+
+[ext_resource type="Texture2D" uid="uid://bkkam5c1q4ryo" path="res://shared/assets/wall.jpg" id="1_ye2ox"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s2fqf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8gvdm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ci75"]
+size = Vector2(147, 144)
+
+[node name="Wall" type="StaticBody2D"]
+light_mask = 4
+visibility_layer = 7
+z_index = -2
+material = SubResource("CanvasItemMaterial_s2fqf")
+use_parent_material = true
+collision_layer = 4
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_8gvdm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, 1)
+scale = Vector2(1, 0.986486)
+texture = ExtResource("1_ye2ox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_1ci75")

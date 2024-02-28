@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://i34d1w7t3q1r"]
+
+[ext_resource type="Theme" uid="uid://ck460gswnkphl" path="res://shared/themes/base1/base1.tres" id="1_s3uit"]
+
+[sub_resource type="Theme" id="Theme_028je"]
+
+[node name="base1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_028je")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("1_s3uit")
+text = "my button"

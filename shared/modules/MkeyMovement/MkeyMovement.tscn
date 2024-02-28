@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://db3poekriupu5"]
+
+[ext_resource type="Script" path="res://shared/modules/MkeyMovement/MkeyMovement.gd" id="1_wwivy"]
+
+[node name="MkeyMovement" type="Node" groups=["keyMovement", "movement"]]
+script = ExtResource("1_wwivy")
