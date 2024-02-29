@@ -1,14 +1,14 @@
 extends Node
- 
+
 func are_points_far_enough(a:Vector2, b:Vector2, min_distance:int):
 	return a.distance_to(b) > min_distance
-	
+
 func find_child_with_variable(parent, variable):
 	for child in parent.get_children():
 		if variable in child:
 			return child
 	return null
-	
+
 func square_to_packed_polygon(col_shape: CollisionShape2D) -> Polygon2D:
 	var size = col_shape.shape.extents * 2
 	var half_size = size / 2
@@ -23,10 +23,10 @@ func square_to_packed_polygon(col_shape: CollisionShape2D) -> Polygon2D:
 		Vector2(position.x - half_size.x, position.y + half_size.y)
 		]
 		))
- 
+
 	return polygon
- 
- 
+
+
 ## you have to put this variable wheter you want to put the z_indexes
 var nodes_list = []
 func get_z_indexes(node,nodes_list_arg):
@@ -36,26 +36,26 @@ func get_z_indexes(node,nodes_list_arg):
 		get_z_indexes(child,nodes_list_arg)
 func sort_by_z_index_desc(a, b):
 	return a[1] < b[1]
-	
+
 func convert_to_normal_vector(Vector:Vector2i) -> Vector2:
 	var normal_vector: Vector2= Vector
-	return normal_vector 
- 
+	return normal_vector
+
 func get_collision_shape_center(area: Area2D, node_name: String= "CollisionShape2D") -> Vector2:
 	if area.get_node(node_name) == null:
 		print("AREA doesnt haVE A COLLISION SHAPE 2D")
-		return Vector2.ZERO 
-	var shape = area.get_node(node_name).shape 
+		return Vector2.ZERO
+	var shape = area.get_node(node_name).shape
 	if shape is RectangleShape2D:
 		var rect_shape =  shape   as RectangleShape2D
 		return area.global_position  + Vector2(rect_shape.extents.x, rect_shape.extents.y)
 	elif  shape is CircleShape2D:
 #		var circle_shape =  shape #as CircleShape2D
-		return  area.global_position 
+		return  area.global_position
 	else:
 		assert (false, "Unsupported collision shape type")
 		return Vector2.ZERO
- 
+
 func play_animation_at_position(animation_node, animation  , position: Vector2, z_index=4096) -> void:
 	if animation_node == null:
 		print("No animation found with name: ", animation_node)
@@ -67,7 +67,7 @@ func play_animation_at_position(animation_node, animation  , position: Vector2, 
 	animation_node.play(animation)
 	print("playing animation",animation_node, animation  , position)
 	# Hide the animation after it finishes playing
-	await animation_node.animation_finished 
+	await animation_node.animation_finished
 	animation_node.hide()
 
 func get_random_point_in_square(square_size: Vector2) -> Vector2: ## shape extents only return half the size of the collision shape
@@ -90,7 +90,7 @@ func lighten_color(color: Color, points: int) -> Color:
 
 	# Convert the lightened color back to Color format
 	return Color(r / 255.0, g / 255.0, b / 255.0)
- 
+
 ## doesnt work
 func area_to_line2d(area: Area2D, width: float) -> Line2D:
 	var line = Line2D.new()
@@ -113,7 +113,7 @@ func polygon_to_line2d(polygon: Polygon2D, width: float, color: Color = Color(1,
 	for i in range( len(vertecies) ):
 		line.add_point(vertecies[i])
 	return line
-	
+
 func sum_dict_values(dict: Dictionary) -> float:
 	var sum = 0.0
 	for value in dict.values():
@@ -122,7 +122,7 @@ func sum_dict_values(dict: Dictionary) -> float:
 		else:
 			assert(false, "DICTIONARY ISNT COMPLETELY MADE OF NUMBERS")
 	return sum
-	
+
 func orientation(p, q, r):
 		var val = (q[1] - p[1]) * (r[0] - q[0]) - (q[0] - p[0]) * (r[1] - q[1])
 		if val == 0:
@@ -144,7 +144,7 @@ func do_lines_intersect(p1, p2, p3, p4):
 			return Vector2(intersect_x, intersect_y)
 
 	return Vector2.ZERO
- 
+
 func do_lines_intersect_in_viewport(p1: Vector2, p2: Vector2, p3: Vector2, p4: Vector2) -> Vector2:
 	var o1 = orientation(p1, p2, p3)
 	var o2 = orientation(p1, p2, p4)
@@ -176,14 +176,14 @@ func print_spaced(messages: Array, debug:bool=true) -> void:
 		print_debug(formatted_message)
 	else:
 		print(formatted_message)
- 
-func calculate_is_inside(polygon, point = Vector2(100,100)):
+
+func calculate_is_inside(polygon, point: Vector2 ):
 #	print(collision_shape.polygon)
 #	var point_in_local = polygon.to_local(point ) #.get_global_transform()
 	var vertecies =polygon.get_polygon()
 	var global_vertecies = []
 	for v in vertecies:
-		global_vertecies.append(polygon.to_global(v))   
+		global_vertecies.append(polygon.to_global(v))
 	return Geometry2D.is_point_in_polygon(point,global_vertecies)
 
 func generate_bezier_curve(start:Vector2, end:Vector2, control_point:Vector2,  num_segments:int):
@@ -191,7 +191,7 @@ func generate_bezier_curve(start:Vector2, end:Vector2, control_point:Vector2,  n
 	var points = []
 	var segments = []
 	while t <= 1:
-		# Define the control points for the Bézier curve 
+		# Define the control points for the Bézier curve
 		var q0 = start.lerp(control_point, t)
 		var q1 = control_point.lerp(end , t)
 		var point = q0.lerp(q1, t)
@@ -202,7 +202,7 @@ func generate_bezier_curve(start:Vector2, end:Vector2, control_point:Vector2,  n
 			segments.append([ round(points[-1]), round(points[-2]) ])
 		t += 1.0/num_segments
 	return segments
-	
+
 func find_ancestor_by_factor(x: int, node: Node) -> Node:
 	var current_node = node
 
@@ -216,15 +216,83 @@ func find_ancestor_by_factor(x: int, node: Node) -> Node:
 			break
 
 	return current_node
-	
- 
-			
+
+
+
 func get_random_enum_value(enum_type: Dictionary) -> int:
 	var enum_values = enum_type.values()
 	return enum_values[randi() % enum_values.size()]
-	
+
 func exit_game() -> void:
 	get_tree().quit()
+
+func collision_shape_to_polygon(collision_shape):
+	# Get the shape of the CollisionShape2D
+	var shape = collision_shape.shape
+
+	# Initialize an empty list to store vertices
+	var vertices = []
+	print(shape)
+	# Check the type of shape
+	if shape is ConvexPolygonShape2D:
+		# For ConvexPolygonShape2D, get the polygon directly
+		vertices = shape.get_vertices()
+
+	elif shape is CircleShape2D:
+		# For CircleShape2D, approximate the circle with vertices
+		var num_segments = 16  # Change this value for higher/lower resolution
+		for i in range(num_segments):
+			var angle = i * (2 * PI / num_segments)
+			var vertex = Vector2(cos(angle), sin(angle)) * shape.radius
+			vertices.append(vertex)
+
+	elif shape is RectangleShape2D:
+		# For RectangleShape2D, get the four corners of the rectangle
+		var extents = shape.extents
+		vertices = [
+			Vector2(-extents.x, -extents.y),
+			Vector2(extents.x, -extents.y),
+			Vector2(extents.x, extents.y),
+			Vector2(-extents.x, extents.y)
+		]
+
+	elif shape is CapsuleShape2D:
+		# For CapsuleShape2D, approximate the capsule with vertices
+		var radius = shape.radius
+		var height = shape.height
+
+		# Calculate half of the capsule's height
+		var half_height = height * 0.5
+
+		# Calculate the number of segments for each rounded end
+		var num_segments = 16  # Change this value for higher/lower resolution
+
+		# Calculate vertices for the two rounded ends
+		for i in range(num_segments):
+			var angle = i * (PI / (num_segments - 1))
+			var x = cos(angle) * radius
+			var y = sin(angle) * radius - half_height
+			vertices.append(Vector2(x, y))
+			vertices.append(Vector2(x, -y))
+
+		# Adjust vertices for the middle rectangular part
+		for i in range(num_segments):
+			var angle = i * (PI / (num_segments - 1))
+			var x = cos(angle) * radius
+			vertices.append(Vector2(x, -half_height))
+			vertices.append(Vector2(x, half_height))
+
+	else:
+		# For other shapes, return an empty list
+		print("Unsupported shape type:", shape.get_type_name())
+		return []
+
+	# Transform vertices to global coordinates
+	var global_vertices = []
+	for v in vertices:
+		global_vertices.append(collision_shape.to_global(v))
+
+	return global_vertices
 # sadly not working
 #func find_ancestor_by_class(name_of_class: String, node: Node) -> Node:
 #	var current_node = node

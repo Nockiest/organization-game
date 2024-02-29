@@ -11,7 +11,7 @@ func _ready() -> void:
 	if parent:
 		if 'shape_type' in parent:
 			shape_type = parent.shape_type
- 
+
 		shape_color = parent.shape_color
 		if 'size' in parent:
 				size = parent.size
@@ -19,11 +19,11 @@ func _ready() -> void:
 		global_position = parent.global_position
 	else:
 		assert(false, 'parent not set')
- 
+
 
 func _draw() -> void:
 	var draw_color = colors_instance.translate_val_to_color(shape_color)
-	print(draw_color)
+#	print(draw_color)
 	match shape_type:
 		GameShapes.GameShapeTypes.RECTANGLE:
 			draw_rect(Rect2(-size, -size, size * 2, size * 2), draw_color)
@@ -34,4 +34,3 @@ func _draw() -> void:
 			draw_circle(Vector2.ZERO, size, draw_color)
 		_:
 			assert(false, "Invalid game shape type set "   )
-		

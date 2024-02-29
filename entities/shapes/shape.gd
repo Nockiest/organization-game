@@ -20,7 +20,7 @@ var velocity = Vector2(0,0)
 func _draw() -> void:
 	update_collision_shape()
 
- 
+
 
 func update_collision_shape() -> void:
 	if not collision_shape:
@@ -43,7 +43,7 @@ func update_collision_shape() -> void:
 		_:
 			assert(false, 'invalid set shape type')
 
- 
+
 func count_points(correct_shape:bool,correct_color:bool):
 	var earned_score =  round(score/2) if correct_shape else -round(score/2)
 	earned_score += round(score/2) if correct_color else 0
@@ -51,10 +51,8 @@ func count_points(correct_shape:bool,correct_color:bool):
 	queue_free()
 
 func _on_marker_2d_area_entered(area: Area2D) -> void:
-#	print('marker entered ', area)
-#	pass
+
 	if area is Bucket:
 		var bucket = area as Bucket
-#		print('marker entered a bucket')
-#		print('marker entered a bucket ' ,bucket.accepted_shape, shape_type)
+
 		count_points(bucket.accepted_shape == shape_type , bucket.shape_color == shape_color)

@@ -57,14 +57,13 @@ text = "[b]Goal:[/b] You have 3 buckets with different shapes. Using the white p
 fit_content = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="ColorRect"]
-layout_mode = 0
 offset_left = 0.251923
 offset_top = 14.5763
 offset_right = 250.252
 offset_bottom = 221.576
 scale = Vector2(0.120836, 0.0545971)
 bbcode_enabled = true
-text = "[b]Scoring:[/b]  
+text = "[b]Scoring:[/b]
 Correct Shape: 25Pt
 Correct Shape + Color: 50Pt
 Color: 0Pt
