@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4uol2mdufmg8"]
+[gd_scene load_steps=12 format=3 uid="uid://c4uol2mdufmg8"]
 
 [ext_resource type="PackedScene" uid="uid://drd2hcnv5p3p3" path="res://entities/player/player.tscn" id="1_6lpk6"]
 [ext_resource type="Script" path="res://scenes/gameLoop/gameLoop.gd" id="1_il73n"]
+[ext_resource type="Texture2D" uid="uid://bo8m84ow4am8f" path="res://assets/m1/PRE_ORIG_SIZE.png" id="2_60n01"]
 [ext_resource type="Script" path="res://scenes/gameLoop/gameField.gd" id="2_mf3po"]
 [ext_resource type="PackedScene" uid="uid://bv86bhlhtfqvf" path="res://shared/modules/Mdebug/Mdebug.tscn" id="2_rxvj2"]
 [ext_resource type="PackedScene" uid="uid://y1gxfuh8enx6" path="res://entities/shapes/shape.tscn" id="4_333sw"]
@@ -115,6 +116,12 @@ shape_color = 2
 wait_time = 5.0
 autostart = true
 script = ExtResource("9_xm3lm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(577, 501)
+scale = Vector2(2.00347, 3.09877)
+texture = ExtResource("2_60n01")
 
 [connection signal="child_exiting_tree" from="gameField/Objects/shapes" to="." method="_on_shapes_child_exiting_tree"]
 [connection signal="timeout" from="WaveDelay" to="gameField" method="_on_wave_delay_timeout"]
