@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4uol2mdufmg8"]
+[gd_scene load_steps=14 format=3 uid="uid://c4uol2mdufmg8"]
 
 [ext_resource type="PackedScene" uid="uid://drd2hcnv5p3p3" path="res://entities/player/player.tscn" id="1_6lpk6"]
 [ext_resource type="Script" path="res://scenes/gameLoop/gameLoop.gd" id="1_il73n"]
@@ -10,11 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://chp2c7l6dnqcm" path="res://entities/wall/wall.tscn" id="5_xxc4p"]
 [ext_resource type="PackedScene" uid="uid://bhqwwsros3oc" path="res://entities/bucket/bucket.tscn" id="6_r8das"]
 [ext_resource type="Script" path="res://scenes/gameLoop/Timer.gd" id="9_xm3lm"]
+[ext_resource type="AudioStream" uid="uid://dgqybtwii7s3w" path="res://assets/music/theme.mp3" id="11_vfmrn"]
+[ext_resource type="PackedScene" uid="uid://yoya0lunywds" path="res://shared/modules/MrandomMusicPlayer/randomMusicPlayer.tscn" id="11_y4fye"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wecsy"]
-size = Vector2(781, 923)
+size = Vector2(970, 1166)
 
-[node name="gameLoop" type="Node2D"]
+[node name="gameLoop" type="Node2D" groups=["gameloops"]]
 script = ExtResource("1_il73n")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -30,82 +32,84 @@ position = Vector2(241, 0)
 script = ExtResource("2_mf3po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="gameField"]
-position = Vector2(330, 465)
+position = Vector2(317, 424)
 shape = SubResource("RectangleShape2D_wecsy")
 
 [node name="Objects" type="Node" parent="gameField"]
 
 [node name="player" parent="gameField/Objects" instance=ExtResource("1_6lpk6")]
-z_index = 1
-position = Vector2(413, 178)
+z_index = 3
+position = Vector2(493, 331)
+allowed_movement = [Vector2(70, 0), Vector2(1042, 1333)]
 
 [node name="shapes" type="Node2D" parent="gameField/Objects"]
+position = Vector2(-168, 0)
 script = ExtResource("4_bmeh1")
 
 [node name="shape" parent="gameField/Objects/shapes" instance=ExtResource("4_333sw")]
-position = Vector2(420, 23)
+position = Vector2(516, 143)
 shape_type = 1
 
 [node name="Walls" type="Node2D" parent="gameField"]
 position = Vector2(-257, 34)
 
 [node name="wall18" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(1051, 1015)
+position = Vector2(1132, 1020)
 
 [node name="wall" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(122, 1)
+position = Vector2(14, 1)
 
 [node name="wall2" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(122, 290)
+position = Vector2(14, 290)
 
 [node name="wall3" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(122, 146)
+position = Vector2(14, 146)
 
 [node name="wall4" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(122, 433)
+position = Vector2(14, 433)
 
 [node name="wall5" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(122, 722)
+position = Vector2(14, 722)
 
 [node name="wall6" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(122, 577)
+position = Vector2(14, 577)
 
 [node name="wall7" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(122, 865)
+position = Vector2(14, 865)
 
 [node name="wall8" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(122, 1007)
+position = Vector2(14, 1007)
 
 [node name="wall10" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(1053, 4)
+position = Vector2(1131, 19)
 
 [node name="wall11" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(1053, 293)
+position = Vector2(1131, 308)
 
 [node name="wall12" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(1053, 148)
+position = Vector2(1131, 163)
 
 [node name="wall13" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(1053, 437)
+position = Vector2(1131, 452)
 
 [node name="wall14" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(1053, 726)
+position = Vector2(1131, 741)
 
 [node name="wall15" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(1053, 581)
+position = Vector2(1131, 596)
 
 [node name="wall16" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(1053, 869)
+position = Vector2(1131, 884)
 
 [node name="wall17" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(633, -296)
+position = Vector2(711, -281)
 scale = Vector2(13.1854, 1.20086)
 
 [node name="wall19" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(122, -139)
+position = Vector2(14, -142)
 
 [node name="wall20" parent="gameField/Walls" instance=ExtResource("5_xxc4p")]
-position = Vector2(1053, -139)
+position = Vector2(1131, -124)
 
 [node name="Buckets" type="Node2D" parent="gameField"]
 position = Vector2(-62, 886)
@@ -129,9 +133,12 @@ shape_color = 2
 [node name="Mdebug" parent="." instance=ExtResource("2_rxvj2")]
 
 [node name="WaveDelay" type="Timer" parent="." groups=["wavetimers"]]
-wait_time = 5.0
+wait_time = 0.123
 autostart = true
 script = ExtResource("9_xm3lm")
 
+[node name="randomMusicPlayer" parent="." instance=ExtResource("11_y4fye")]
+sound_list = Array[AudioStream]([ExtResource("11_vfmrn")])
+
+[connection signal="area_shape_exited" from="gameField" to="gameField" method="_on_area_shape_exited"]
 [connection signal="child_exiting_tree" from="gameField/Objects/shapes" to="." method="_on_shapes_child_exiting_tree"]
-[connection signal="timeout" from="WaveDelay" to="gameField" method="on_wave_delay_timeout"]

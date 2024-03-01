@@ -2,9 +2,13 @@ class_name ShapeDrawer
 extends Node2D
 
 @export var parent: Node
-@export var shape_type:= GameShapes.GameShapeTypes.RECTANGLE
-@export var shape_color:= Colors.GameColors.BLUE
-@export var size:=50
+@export var shape_type:= GameShapes.GameShapeTypes.RECTANGLE 
+@export var shape_color:= Colors.GameColors.BLUE:
+	set(value):
+		shape_color = value
+		queue_redraw()
+		
+@export var size:=50 
 var colors_instance = Colors.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,7 +27,7 @@ func _ready() -> void:
 
 func _draw() -> void:
 	var draw_color = colors_instance.translate_val_to_color(shape_color)
-#	print(draw_color)
+#	print(draw_color, 'draw_color')
 	match shape_type:
 		GameShapes.GameShapeTypes.RECTANGLE:
 			draw_rect(Rect2(-size, -size, size * 2, size * 2), draw_color)

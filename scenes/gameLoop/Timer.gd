@@ -2,6 +2,5 @@ extends Timer
 
 func _ready() -> void:
 	start()
-
-func get_remaining_time() -> String:
-	return  str(round(time_left))
+	self.connect("timeout",  Global._on_wave_timeout )
+ 

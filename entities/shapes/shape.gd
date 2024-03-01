@@ -1,27 +1,17 @@
 class_name Shape extends RigidBody2D
 
-@export var shape_type:= Utils.get_random_enum_value(GameShapes.GameShapeTypes):
-	set(value):
-		shape_type=value
-		update_collision_shape()
-@export var shape_color:= Utils.get_random_enum_value(Colors.GameColors):
-	set(value):
-		shape_color=value
-		update_collision_shape()
+@export var shape_type:= Utils.get_random_enum_value(GameShapes.GameShapeTypes)
+ 
+var shape_color:= Utils.get_random_enum_value(Colors.GameColors,[Colors.GameColors.GRAY] )
+ 
 @export var score:= 50
 @export var size:=50
-@export var collision_shape: CollisionShape2D:
-	set(value):
-		collision_shape=value
-		update_collision_shape()
-var velocity = Vector2(0,0)
-
-
+@export var collision_shape: CollisionShape2D
+ 
+ 
 func _draw() -> void:
 	update_collision_shape()
-
-
-
+ 
 func update_collision_shape() -> void:
 	if not collision_shape:
 		return
@@ -49,10 +39,35 @@ func count_points(correct_shape:bool,correct_color:bool):
 	earned_score += round(score/2) if correct_color else 0
 	Stats.game_score += earned_score
 	queue_free()
-
 func _on_marker_2d_area_entered(area: Area2D) -> void:
-
 	if area is Bucket:
 		var bucket = area as Bucket
-
+		if bucket.accepted_shape == shape_type or bucket.shape_color == shape_color:
+ 
+			$correct.play( )
+		else:
+			$wrong.play( )
+		
+ 
+		await  get_tree().create_timer(0.5).timeout 
+		$drawShape.shape_color = Colors.GameColors.GRAY
+		# Now queue_free the node
+#		queue_free()
+		
 		count_points(bucket.accepted_shape == shape_type , bucket.shape_color == shape_color)
+#func _on_marker_2d_area_entered(area: Area2D) -> void:
+#
+#	if area is Bucket:
+#		var bucket = area as Bucket
+#		if bucket.accepted_shape == shape_type or bucket.shape_color == shape_color:
+#			$correct.play()
+#		else:
+#			$wrong.play()
+#		count_points(bucket.accepted_shape == shape_type , bucket.shape_color == shape_color)
+
+
+func _on_tree_exiting() -> void:
+	if position.y > 1200:
+		$wrong.play( )
+		await  get_tree().create_timer(2).timeout 
+	queue_free()

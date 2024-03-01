@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://drd2hcnv5p3p3"]
+[gd_scene load_steps=5 format=3 uid="uid://drd2hcnv5p3p3"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_r5osj"]
 [ext_resource type="PackedScene" uid="uid://db3poekriupu5" path="res://shared/modules/MkeyMovement/MkeyMovement.tscn" id="2_r1p7u"]
+[ext_resource type="AudioStream" uid="uid://c63rr1jgifto1" path="res://assets/music/thud.mp3" id="3_1uhuw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_574w7"]
 size = Vector2(304, 28)
@@ -10,6 +11,7 @@ size = Vector2(304, 28)
 collision_layer = 3
 collision_mask = 3
 motion_mode = 1
+safe_margin = 13.009
 script = ExtResource("1_r5osj")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
@@ -25,3 +27,6 @@ shape = SubResource("RectangleShape2D_574w7")
 MovedObject = NodePath("..")
 speed = 600.0
 rotation_speed = 500.0
+
+[node name="thud" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1uhuw")

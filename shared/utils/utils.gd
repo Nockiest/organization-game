@@ -73,7 +73,7 @@ func play_animation_at_position(animation_node, animation  , position: Vector2, 
 func get_random_point_in_square(square_size: Vector2) -> Vector2: ## shape extents only return half the size of the collision shape
 	var random_x = randi_range(0, int(square_size.x))
 	var random_y = randi_range(0, int(square_size.y))
-#	print(Vector2(random_x, random_y),square_size.x," ",square_size.y)
+ 
 	return Vector2(random_x, random_y)
 
 ## doesnt work how I intended
@@ -107,7 +107,7 @@ func polygon_to_line2d(polygon: Polygon2D, width: float, color: Color = Color(1,
 	var line = Line2D.new()
 	var vertecies = polygon.get_polygon()
 	vertecies.append(vertecies[0]) ## so the line is circumnavigating the whole polygon
-#	print(vertecies)
+ 
 	line.width = width
 	line.modulate = color
 	for i in range( len(vertecies) ):
@@ -176,14 +176,8 @@ func print_spaced(messages: Array, debug:bool=true) -> void:
 		print_debug(formatted_message)
 	else:
 		print(formatted_message)
-
-func calculate_is_inside(polygon, point: Vector2 ):
-#	print(collision_shape.polygon)
-#	var point_in_local = polygon.to_local(point ) #.get_global_transform()
-	var vertecies =polygon.get_polygon()
-	var global_vertecies = []
-	for v in vertecies:
-		global_vertecies.append(polygon.to_global(v))
+#Utils.calculate_is_inside(Utils.collision_shape_to_polygon(shape.get_node('CollisionShape2D')), Vector2(random_x, 0)):
+func calculate_is_inside(global_vertecies, point: Vector2 ):
 	return Geometry2D.is_point_in_polygon(point,global_vertecies)
 
 func generate_bezier_curve(start:Vector2, end:Vector2, control_point:Vector2,  num_segments:int):
@@ -197,7 +191,7 @@ func generate_bezier_curve(start:Vector2, end:Vector2, control_point:Vector2,  n
 		var point = q0.lerp(q1, t)
 		# Generate two random points between the start and end points
 		points.append(point)
-#		print(line.points.size)
+ 
 		if len( points) >= 2:
 			segments.append([ round(points[-1]), round(points[-2]) ])
 		t += 1.0/num_segments
@@ -219,9 +213,17 @@ func find_ancestor_by_factor(x: int, node: Node) -> Node:
 
 
 
-func get_random_enum_value(enum_type: Dictionary) -> int:
+func get_random_enum_value(enum_type: Dictionary, forbidden_values: Array=[]) -> int:
 	var enum_values = enum_type.values()
-	return enum_values[randi() % enum_values.size()]
+	var valid_values = []
+	for val in enum_values:
+		if val not in forbidden_values:
+			valid_values.append(val)
+#	print(enum_type, 'valid values', valid_values)
+	var res =valid_values[randi() % valid_values.size()]
+#	print(res, ' ', valid_values.size())
+	return   res
+
 
 func exit_game() -> void:
 	get_tree().quit()
@@ -232,11 +234,11 @@ func collision_shape_to_polygon(collision_shape):
 
 	# Initialize an empty list to store vertices
 	var vertices = []
-	print(shape)
+#	print(shape)
 	# Check the type of shape
 	if shape is ConvexPolygonShape2D:
 		# For ConvexPolygonShape2D, get the polygon directly
-		vertices = shape.get_vertices()
+		vertices = shape.get_points ( )
 
 	elif shape is CircleShape2D:
 		# For CircleShape2D, approximate the circle with vertices
@@ -291,7 +293,7 @@ func collision_shape_to_polygon(collision_shape):
 	var global_vertices = []
 	for v in vertices:
 		global_vertices.append(collision_shape.to_global(v))
-
+#	print_debug('glbal verticies', global_vertices)
 	return global_vertices
 # sadly not working
 #func find_ancestor_by_class(name_of_class: String, node: Node) -> Node:

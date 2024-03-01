@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("move_down"):
 		input_vector.y += 1
 	if Input.is_action_pressed("move_left"):
+		print(boundaries)
 		input_vector.x -= 1
 	if Input.is_action_pressed("move_right"):
 		input_vector.x += 1
@@ -29,7 +30,7 @@ func _process(delta: float) -> void:
 	
 	# Calculate the new position
 	var new_position = MovedObject.global_position + motion
-#	print(clamp(boundaries[0][0], new_position.x, boundaries[1][0]),clamp(boundaries[0][1], new_position.y, boundaries[1][1]))
+ 
 	MovedObject.position  = Vector2(clamp(boundaries[0][0], new_position.x, boundaries[1][0]),clamp(boundaries[0][1], new_position.y, boundaries[1][1]))
 	
 	if Input.is_action_pressed("rotate_clockwise"):

@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Organization"
+config/name="Shape Sort Chaos"
 run/main_scene="res://scenes/gameLoop/gameLoop.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"

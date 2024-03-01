@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://yoya0lunywds"]
+
+[ext_resource type="Script" path="res://shared/modules/MrandomMusicPlayer/randomMusicPlayer.gd" id="1_hsw5e"]
+
+[node name="randomMusicPlayer" type="Node"]
+script = ExtResource("1_hsw5e")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhx31dwxhgtt1"]
+[gd_scene load_steps=8 format=3 uid="uid://bhx31dwxhgtt1"]
 
 [ext_resource type="Texture2D" uid="uid://bo8m84ow4am8f" path="res://assets/m1/PRE_ORIG_SIZE.png" id="1_dfwvq"]
 [ext_resource type="Script" path="res://scenes/start-screen/start-screen.gd" id="1_rilaf"]
 [ext_resource type="Theme" uid="uid://ck460gswnkphl" path="res://shared/themes/base1/base1.tres" id="3_hn1l2"]
+[ext_resource type="AudioStream" uid="uid://d1aa0fdim8bjv" path="res://assets/music/interface-124464.mp3" id="4_vynnw"]
+[ext_resource type="PackedScene" uid="uid://yoya0lunywds" path="res://shared/modules/MrandomMusicPlayer/randomMusicPlayer.tscn" id="5_1r4rw"]
+[ext_resource type="AudioStream" uid="uid://civc0hgicu1th" path="res://assets/music/start.mp3" id="5_nwwql"]
+
+[sub_resource type="AudioBusLayout" id="AudioBusLayout_gxng5"]
 
 [node name="start-screen" type="Control"]
 layout_mode = 3
@@ -51,6 +56,13 @@ text = "Tutorial"
 layout_mode = 2
 theme = ExtResource("3_hn1l2")
 text = "Quit Game"
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vynnw")
+
+[node name="randomMusicPlayer" parent="." instance=ExtResource("5_1r4rw")]
+sound_list = Array[AudioStream]([ExtResource("5_nwwql")])
+bus = SubResource("AudioBusLayout_gxng5")
 
 [connection signal="pressed" from="VBoxContainer/StartGameBtn" to="." method="_on_start_game_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/TutorialBtn" to="." method="_on_tutorial_pressed"]
