@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4uol2mdufmg8"]
+[gd_scene load_steps=15 format=3 uid="uid://c4uol2mdufmg8"]
 
 [ext_resource type="PackedScene" uid="uid://drd2hcnv5p3p3" path="res://entities/player/player.tscn" id="1_6lpk6"]
 [ext_resource type="Script" path="res://scenes/gameLoop/gameLoop.gd" id="1_il73n"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scenes/gameLoop/Timer.gd" id="9_xm3lm"]
 [ext_resource type="AudioStream" uid="uid://dgqybtwii7s3w" path="res://assets/music/theme.mp3" id="11_vfmrn"]
 [ext_resource type="PackedScene" uid="uid://yoya0lunywds" path="res://shared/modules/MrandomMusicPlayer/randomMusicPlayer.tscn" id="11_y4fye"]
+[ext_resource type="PackedScene" uid="uid://c041elkd8hjr0" path="res://shared/scoreTracker/scoreTracker.tscn" id="13_xx4nr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wecsy"]
 size = Vector2(970, 1166)
@@ -131,6 +132,7 @@ scale = Vector2(1.2, 1.2)
 shape_color = 2
 
 [node name="Mdebug" parent="." instance=ExtResource("2_rxvj2")]
+visible = false
 
 [node name="WaveDelay" type="Timer" parent="." groups=["wavetimers"]]
 wait_time = 0.123
@@ -139,6 +141,10 @@ script = ExtResource("9_xm3lm")
 
 [node name="randomMusicPlayer" parent="." instance=ExtResource("11_y4fye")]
 sound_list = Array[AudioStream]([ExtResource("11_vfmrn")])
+
+[node name="scoreTracker" parent="." instance=ExtResource("13_xx4nr")]
+offset_top = -3.0
+offset_bottom = -3.0
 
 [connection signal="area_shape_exited" from="gameField" to="gameField" method="_on_area_shape_exited"]
 [connection signal="child_exiting_tree" from="gameField/Objects/shapes" to="." method="_on_shapes_child_exiting_tree"]

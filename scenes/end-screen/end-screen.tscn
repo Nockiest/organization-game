@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3hbqyo16200u"]
+[gd_scene load_steps=11 format=3 uid="uid://b3hbqyo16200u"]
 
 [ext_resource type="Script" path="res://scenes/end-screen/end-screen.gd" id="1_ywl3q"]
 [ext_resource type="Texture2D" uid="uid://d3f4w8ws72y40" path="res://assets/m2/PRE_ORIG_SIZE.png" id="2_qjjt1"]
 [ext_resource type="Theme" uid="uid://ck460gswnkphl" path="res://shared/themes/base1/base1.tres" id="3_5hlay"]
 [ext_resource type="AudioStream" uid="uid://nww6omfm0bee" path="res://assets/music/sfx/you-won.mp3" id="4_3dbr5"]
+[ext_resource type="Theme" uid="uid://5eas63ekmomg" path="res://labeltheme.tres" id="5_tcgkr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hauy"]
 bg_color = Color(0.168627, 0.223529, 0.941176, 1)
@@ -113,11 +114,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -199.5
+offset_top = -139.5
 offset_right = 20.0
-offset_bottom = -176.5
+offset_bottom = -116.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_tcgkr")
 
 [node name="highScore" type="Label" parent="."]
 layout_mode = 1
@@ -132,6 +134,7 @@ offset_right = 20.0
 offset_bottom = -88.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_tcgkr")
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

@@ -17,8 +17,8 @@ var wave_number:= -1:
 #			end_game()
 var high_score = 0
 const waves := [
-	2,
-	4,
+	1,
+	1,
 #	5,
 #	6,
 #	7,

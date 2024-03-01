@@ -1,7 +1,7 @@
 extends Node
 
 var game_score := 0
-var highest_score   = 0
+var highest_score  = float(-INF)
 
 
 

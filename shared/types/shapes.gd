@@ -7,8 +7,5 @@ enum GameShapeTypes {
 	CIRCLE
 }
 
-#const RECTANGLE = 'rect'
-#const TRIANGLE = 'tri'
-#const CIRCLE = 'circle'
-
+ 
 var shape_score:= 10

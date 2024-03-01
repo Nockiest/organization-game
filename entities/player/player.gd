@@ -16,16 +16,23 @@ func _ready() -> void:
 	print('allowed ', allowed_movement)
 	# Set the boundaries for movement
 	$MkeyMovement.boundaries = allowed_movement
-func _on_body_entered(body: Node2D) -> void:
-	print('body collided with player')
-	$thud.play()
+	connect("body_entered",  _on_body_entered )
+	
+#func _on_body_entered(body: Node2D) -> void:
+##	print('body collided with player')
+#	$thud.play()
 
-func _on_area_entered(area: Area2D) -> void:
-	print('player collided')
+#func _on_area_entered(area: Area2D) -> void:
+#	print('player collided')
 
-func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	print('player collided with body')
-
-func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	print('body collided with player')
-	$thud.play()
+#func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+#	print('player collided with body')
+ 
+func _on_body_entered(body: Node) -> void:
+	# Check if the body entered is not the KinematicBody itself
+	if body != self:
+		# Play the collision sound
+		$thud.play()
+#func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+##	print('body collided with player')
+#	$thud.play()

@@ -35,10 +35,17 @@ func update_collision_shape() -> void:
 
 
 func count_points(correct_shape:bool,correct_color:bool):
-	var earned_score =  round(score/2) if correct_shape else -round(score/2)
-	earned_score += round(score/2) if correct_color else 0
-	Stats.game_score += earned_score
-	queue_free()
+	print( correct_shape ,  correct_color)
+	if not correct_shape and not correct_color:
+		print(1)
+		Stats.game_score += -score
+	elif correct_shape and   correct_color:
+		print(2)
+		Stats.game_score +=  score
+	else:
+		print(3)
+		Stats.game_score +=  round(score/2)
+ 
 func _on_marker_2d_area_entered(area: Area2D) -> void:
 	if area is Bucket:
 		var bucket = area as Bucket
@@ -50,24 +57,13 @@ func _on_marker_2d_area_entered(area: Area2D) -> void:
 		
  
 		await  get_tree().create_timer(0.5).timeout 
-		$drawShape.shape_color = Colors.GameColors.GRAY
-		# Now queue_free the node
-#		queue_free()
-		
+#		$drawShape.shape_color = Colors.GameColors.GRAY
+#		print(bucket.accepted_shape == shape_type, bucket.shape_color , 'shape_color',  shape_color)
+		print(bucket.accepted_shape ,shape_type)
+		print(bucket.shape_color , shape_color)
 		count_points(bucket.accepted_shape == shape_type , bucket.shape_color == shape_color)
-#func _on_marker_2d_area_entered(area: Area2D) -> void:
-#
-#	if area is Bucket:
-#		var bucket = area as Bucket
-#		if bucket.accepted_shape == shape_type or bucket.shape_color == shape_color:
-#			$correct.play()
-#		else:
-#			$wrong.play()
-#		count_points(bucket.accepted_shape == shape_type , bucket.shape_color == shape_color)
-
-
+		queue_free()
 func _on_tree_exiting() -> void:
 	if position.y > 1200:
 		$wrong.play( )
 		await  get_tree().create_timer(2).timeout 
-	queue_free()

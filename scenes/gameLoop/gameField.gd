@@ -21,7 +21,6 @@ func spawn_shape( ):
 	var random_x =  randi_range(global_position.x, max_x) +shape_instance.size
 #	var intersects = false
 	shape_instance.shape_color = Utils.get_random_enum_value(Colors.GameColors,[Colors.GameColors.GRAY] )
-	var shapes = $Objects/shapes.get_children()
 	shape_instance.global_position.x = random_x
 	shape_instance.global_position.y = -shape_instance.size
  
@@ -30,13 +29,13 @@ func spawn_shape( ):
 #	$Objects/player.allowed_movement[0] =  global_position
 #	$Objects/player.allowed_movement[1] = global_position + Vector2(extents.x*2, extents.y*2)
  
-func _on_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+func _on_area_shape_exited(_area_rid: RID, area: Area2D, _area_shape_index: int, local_shape_index: int) -> void:
 	if area:
 		var object_exiting = area.get_overlapping_bodies()[local_shape_index]
 		if object_exiting is Shape:
 			object_exiting.get_node('wrong').play()
 			await object_exiting.get_node('wrong') .finished
 			object_exiting.queue_free()
-	if len($Objects/shapes.get_children()) == 0 and len(Global.waves) >= Global.wave_number:
-		Global.end_game()
+#	if len($Objects/shapes.get_children()) == 0 and len(Global.waves) >= Global.wave_number:
+#		Global.end_game()
 

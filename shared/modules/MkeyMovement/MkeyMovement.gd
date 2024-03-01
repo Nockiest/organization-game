@@ -17,7 +17,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("move_down"):
 		input_vector.y += 1
 	if Input.is_action_pressed("move_left"):
-		print(boundaries)
 		input_vector.x -= 1
 	if Input.is_action_pressed("move_right"):
 		input_vector.x += 1

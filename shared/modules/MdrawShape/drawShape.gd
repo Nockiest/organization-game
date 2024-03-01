@@ -2,7 +2,10 @@ class_name ShapeDrawer
 extends Node2D
 
 @export var parent: Node
-@export var shape_type:= GameShapes.GameShapeTypes.RECTANGLE 
+@export var shape_type:= GameShapes.GameShapeTypes.RECTANGLE:
+	set(value):
+		shape_type = value
+		queue_redraw()
 @export var shape_color:= Colors.GameColors.BLUE:
 	set(value):
 		shape_color = value

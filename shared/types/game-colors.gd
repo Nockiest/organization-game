@@ -3,10 +3,7 @@ extends Node
 
 
 # Called when the node enters the scene tree for the first time.
-
-#var red = Color('red')
-#var blue = Color('blue')
-#var green = Color('green')
+ 
 var YELLOW = Color('#C8F024')
 var BLUE = Color('#2B39F0')
 var RED = Color('#F0662C')
